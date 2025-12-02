@@ -1,44 +1,69 @@
 # 🧠 Distributed MNIST Recognition (MapReduce)
 
-A distributed machine learning engine built from scratch to recognize handwritten digits (MNIST dataset). It utilizes **MapReduce** architecture and **Python Multiprocessing** to parallelize the training process across CPU cores.
+A distributed machine learning engine built from scratch to recognize handwritten digits (MNIST dataset). It uses a **MapReduce** architecture and **Python Multiprocessing** to parallelize training across CPU cores.
+
+---
 
 ## ✨ Features
 
-* **Custom Neural Network:** Built entirely with `NumPy`. No high-level frameworks like TensorFlow or PyTorch used.
-* **Distributed Training:** Implements a Master-Worker architecture using Python's `multiprocessing` to calculate gradients in parallel (MapReduce pattern).
-* **Smart GUI:** A Tkinter-based application for real-time testing.
-    * **Adaptive Preprocessing:** Automatically detects ink density (thick marker vs. thin pen) and applies smart erosion/dilation algorithms.
-    * **Center of Mass Alignment:** Replicates MNIST's mathematical centering logic for high accuracy.
-    * **Real-time Debug View:** Shows exactly what the AI sees before prediction.
+- **Custom Neural Network:** Built entirely with `NumPy` — no TensorFlow or PyTorch.
+- **Distributed Training:** Master–Worker architecture using `multiprocessing` (MapReduce pattern).
+- **Smart GUI:** Tkinter-based application for real-time digit testing.
+  - Adaptive preprocessing based on ink density.
+  - Center of Mass alignment (MNIST-style).
+  - Real-time debug view.
+
+---
 
 ## 🛠️ Installation
 
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/ramt11n/Distributed-MNIST.git](https://github.com/ramt11n/Distributed-MNIST.git)
-    cd Distributed-MNIST
-    ```
+### 1. Clone the repository
+```bash
+git clone https://github.com/ramt11n/Distributed-MNIST.git
+cd Distributed-MNIST
+```
 
-2.  **Create a virtual environment & install dependencies:**
-    ```bash
-    python3 -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    pip install numpy pillow
-    ```
+### 2. Create a virtual environment & install dependencies
+```bash
+python3 -m venv venv
+source venv/bin/activate     # Windows: venv\Scripts\activate
+pip install numpy pillow
+```
 
-3.  **Download Data:**
-    Because the dataset is binary, it is not included in the repo. Download the 4 files below from [Yann LeCun's MNIST website](http://yann.lecun.com/exdb/mnist/) and place them in the `data/` folder:
-    * `train-images-idx3-ubyte.gz`
-    * `train-labels-idx1-ubyte.gz`
-    * `t10k-images-idx3-ubyte.gz`
-    * `t10k-labels-idx1-ubyte.gz`
+### 3. Download the MNIST dataset
+Download the following files from Yann LeCun’s website and put them in the `data/` folder:
+
+- train-images-idx3-ubyte.gz  
+- train-labels-idx1-ubyte.gz  
+- t10k-images-idx3-ubyte.gz  
+- t10k-labels-idx1-ubyte.gz  
+
+---
 
 ## 🚀 Usage
 
-### 1. Train the Model (The Backend)
-Run the master node to start distributed training. This uses your CPU cores to train the model and generates the `my_model.npz` file.
-
+### 1. Train the model (Backend)
 ```bash
 python3 main.py
-2. Run the Application (The Frontend)Launch the GUI to draw digits or upload images for prediction.Bashpython3 app.py
-🏗️ Project ArchitectureFileDescriptionsrc/neural_net.pyThe mathematical brain (Matrix multiplication, Forward/Backward prop).src/worker.pyThe worker process logic (Map phase).src/mnist_loader.pyParsers for reading binary IDX files.main.pyThe Master process. Splits data, manages workers, and updates weights (Reduce phase).app.pyThe GUI. Handles drawing, image processing, skeletonization, and prediction.Created by Ramtin Neshat
+```
+
+### 2. Run the application (Frontend)
+```bash
+python3 app.py
+```
+
+---
+
+## 🏗️ Project Architecture
+
+| File | Description |
+|------|-------------|
+| src/neural_net.py | Matrix ops, forward/backward propagation. |
+| src/worker.py | Worker process logic (Map phase). |
+| src/mnist_loader.py | IDX file parsers. |
+| main.py | Master process (Reduce phase). |
+| app.py | GUI for drawing, preprocessing, prediction. |
+
+---
+
+Created by **Ramtin Neshat**
