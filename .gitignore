@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+venv/
+env/
+
+# Mac OS
+.DS_Store
+
+# Data (Optional: if you want to force users to download data themselves, uncomment below)
+# data/
+
+# Model (Optional: Keep this commented if you want to upload your trained brain)
+# my_model.npz
